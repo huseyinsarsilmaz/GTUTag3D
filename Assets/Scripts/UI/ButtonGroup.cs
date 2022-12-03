@@ -8,6 +8,8 @@ public class ButtonGroup : MonoBehaviour
     private Color hoverColor = new Color(0.2509f,0.4509f,0.619f);
 
     private Color defaultColor = new Color(0.8823f,0.6941f,0.1725f);
+    public GameObject startScene;
+    public GameObject creditsScene;
     
     public void subscribe(Button button)
     {
@@ -35,12 +37,6 @@ public class ButtonGroup : MonoBehaviour
     {
         resetButtons();
     }
-
-    public void onSelected(Button button)
-    {
-        resetButtons();
-    }
-
     public void resetButtons()
     {
         foreach (Button button in Buttons)
@@ -56,8 +52,14 @@ public class ButtonGroup : MonoBehaviour
         }
     }
 
-    public void sa () {
-        Debug.Log("sa");
+    public void goToCredits () {
+        startScene.SetActive(false);
+        creditsScene.SetActive(true);
+    }
+
+    public void returnFromCredits(){
+        startScene.SetActive(true);
+        creditsScene.SetActive(false);
     }
     
 }

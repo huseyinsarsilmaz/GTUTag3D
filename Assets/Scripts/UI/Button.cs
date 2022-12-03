@@ -5,18 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Button : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
+public class Button : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     public ButtonGroup buttonGroup;
     public Image background;
     public TMPro.TextMeshProUGUI text;
     public bool isText;
-    
-    
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
-    {
-        buttonGroup.onSelected(this);
-    }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
