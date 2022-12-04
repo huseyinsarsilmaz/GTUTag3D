@@ -8,9 +8,11 @@ public class ButtonGroup : MonoBehaviour
     private Color hoverColor = new Color(0.2509f,0.4509f,0.619f);
 
     private Color defaultColor = new Color(0.8823f,0.6941f,0.1725f);
+    private Color disabledColor = new Color(0.4431f,0.5019f,0.5764f,0.2196f);
     public GameObject startScene;
     public GameObject creditsScene;
     public GameObject optionsScene;
+    public GameObject playModal;
     
     public void subscribe(Button button)
     {
@@ -82,7 +84,7 @@ public class ButtonGroup : MonoBehaviour
             GameData.isSound = true;
             optionsScene.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
         }
-        this.GetComponent<AudioSource>().Play();
+        if(GameData.isSound == true) this.GetComponent<AudioSource>().Play();
 
     }
 
@@ -95,7 +97,17 @@ public class ButtonGroup : MonoBehaviour
             GameData.isMusic = true;
             optionsScene.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(true);
         }
-        this.GetComponent<AudioSource>().Play();
+        if(GameData.isSound == true) this.GetComponent<AudioSource>().Play();
 
+    }
+
+    public void openPlayModal(){
+        playModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text = "";
+        playModal.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
+        playModal.SetActive(true);
+    }
+
+    public void closePlayModal() {
+        playModal.SetActive(false);
     }
 }
