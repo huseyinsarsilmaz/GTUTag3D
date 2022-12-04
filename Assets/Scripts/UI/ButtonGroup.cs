@@ -10,6 +10,7 @@ public class ButtonGroup : MonoBehaviour
     private Color defaultColor = new Color(0.8823f,0.6941f,0.1725f);
     public GameObject startScene;
     public GameObject creditsScene;
+    public GameObject optionsScene;
     
     public void subscribe(Button button)
     {
@@ -57,9 +58,18 @@ public class ButtonGroup : MonoBehaviour
         creditsScene.SetActive(true);
     }
 
+    public void goToOptions() {
+        startScene.SetActive(false);
+        optionsScene.SetActive(true);
+    }
+
     public void returnFromCredits(){
         startScene.SetActive(true);
         creditsScene.SetActive(false);
     }
     
+    public void returnFromOptions() {
+        startScene.SetActive(true);
+        optionsScene.SetActive(false);
+    }
 }
