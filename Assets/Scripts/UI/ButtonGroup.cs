@@ -72,4 +72,30 @@ public class ButtonGroup : MonoBehaviour
         startScene.SetActive(true);
         optionsScene.SetActive(false);
     }
+
+    public void changeSoundEffectSetting(){
+        if(GameData.isSound == true){
+            GameData.isSound = false;
+            optionsScene.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
+        }
+        else{
+            GameData.isSound = true;
+            optionsScene.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
+        }
+        this.GetComponent<AudioSource>().Play();
+
+    }
+
+    public void changeMusicSetting(){
+        if(GameData.isMusic == true){
+            GameData.isMusic = false;
+            optionsScene.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
+        }
+        else{
+            GameData.isMusic = true;
+            optionsScene.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(true);
+        }
+        this.GetComponent<AudioSource>().Play();
+
+    }
 }
