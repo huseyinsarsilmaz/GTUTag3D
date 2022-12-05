@@ -13,6 +13,7 @@ public class ButtonGroup : MonoBehaviour
     public GameObject creditsScene;
     public GameObject optionsScene;
     public GameObject playModal;
+    public GameObject blurry;
     
     public void subscribe(Button button)
     {
@@ -104,10 +105,13 @@ public class ButtonGroup : MonoBehaviour
     public void openPlayModal(){
         playModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text = "";
         playModal.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
+        blurry.SetActive(true);
         playModal.SetActive(true);
+        
     }
 
     public void closePlayModal() {
+        blurry.SetActive(false);
         playModal.SetActive(false);
     }
 }
