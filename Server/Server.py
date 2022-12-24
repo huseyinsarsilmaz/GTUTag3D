@@ -32,6 +32,7 @@ def worker(conn, addr, sql):
             break
         elif (data == "Hello"):
             conn.sendall("Hi".encode())
+
     conn.close()
 
 
