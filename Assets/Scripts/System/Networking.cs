@@ -5,26 +5,31 @@ using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
 
-public class ServerConnection : MonoBehaviour
+
+public class Networking : MonoBehaviour
 {
-    public string serverIP = "192.168.65.34";
-    public int serverPort = 25001;
+    public string serverIP = "34.125.80.14";
+    public int serverPort = 3389;
+    public static Networking instance;
     IPAddress ipAddress;
     TcpClient client;
     string message;
 
     void Start()
     {
+        if (instance == null)
+            instance = this;
+        else if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        GameObject.DontDestroyOnLoad(this.gameObject);
         //connect to server
         ipAddress = IPAddress.Parse(serverIP);
         client = new TcpClient();
         client.Connect(ipAddress, serverPort);
         Debug.Log("Connected to server");
-
-    }
-
-    void Update()
-    {
         NetworkStream stream = client.GetStream();
         string response = "Salam aleikum";
         byte[] responseData = Encoding.UTF8.GetBytes(response);
@@ -36,7 +41,9 @@ public class ServerConnection : MonoBehaviour
 
     }
 
+    void Update()
+    {
 
 
-
+    }
 }
