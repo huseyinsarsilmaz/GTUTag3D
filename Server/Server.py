@@ -42,6 +42,7 @@ def worker(conn, addr, db):
             else:
                 sql.execute(
                     "INSERT INTO players (username, password, wins, loses) VALUES (%s, %s, %s, %s)", (data[1], data[2], 0, 0))
+                db.commit()
                 conn.sendall("Done".encode())
 
 
