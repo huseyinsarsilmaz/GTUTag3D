@@ -31,7 +31,7 @@ public class Networking : MonoBehaviour
         client.Connect(ipAddress, serverPort);
         Debug.Log("Connected to server");
         NetworkStream stream = client.GetStream();
-        string response = "Salam aleikum";
+        string response = "Hello";
         byte[] responseData = Encoding.UTF8.GetBytes(response);
         stream.Write(responseData, 0, responseData.Length);
         byte[] data = new byte[256];
