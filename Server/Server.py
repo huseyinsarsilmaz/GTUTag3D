@@ -17,14 +17,14 @@ def establishConnections(port: int):
     else:
         print("Failed to connected to database")
         exit()
-    cursor = db.cursor()
     sock.listen()
     print("Server Started...")
-    return sock, cursor
+    return sock, db
 
 
-def worker(conn, addr, sql):
+def worker(conn, addr, db):
     global players
+    sql = db.cursor()
     print("Connected to:", addr)
     while True:
         data = conn.recv(1024).decode()
@@ -48,9 +48,9 @@ def worker(conn, addr, sql):
     conn.close()
 
 
-sock, sql = establishConnections(3389)
+sock, db = establishConnections(3389)
 players = []
 
 while True:
     conn, addr = sock.accept()
-    start_new_thread(worker, (conn, addr, sql))
+    start_new_thread(worker, (conn, addr, db))
