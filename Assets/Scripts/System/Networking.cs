@@ -13,6 +13,7 @@ public class Networking : MonoBehaviour
     public static Networking instance;
     IPAddress ipAddress;
     TcpClient client;
+    NetworkStream stream;
     string message;
 
     void Start()
@@ -30,7 +31,7 @@ public class Networking : MonoBehaviour
         client = new TcpClient();
         client.Connect(ipAddress, serverPort);
         Debug.Log("Connected to server");
-        NetworkStream stream = client.GetStream();
+        stream = client.GetStream();
         string response = "Hello";
         byte[] responseData = Encoding.UTF8.GetBytes(response);
         stream.Write(responseData, 0, responseData.Length);
@@ -39,6 +40,17 @@ public class Networking : MonoBehaviour
         message = Encoding.UTF8.GetString(data, 0, bytes);
         Debug.Log(message);
 
+    }
+
+    void signUp(string username, string password)
+    {
+        string request = "Signup " + username + " " + password;
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        byte[] data = new byte[256];
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+        Debug.Log(message);
     }
 
     void Update()

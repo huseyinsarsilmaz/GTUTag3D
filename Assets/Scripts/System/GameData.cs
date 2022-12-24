@@ -8,6 +8,8 @@ public class GameData : MonoBehaviour
     public bool isSound = true;
     public bool isMusic = true;
     public bool isConnected = false;
+    public string userName = "";
+    public string password = "";
 
     void Start()
     {
