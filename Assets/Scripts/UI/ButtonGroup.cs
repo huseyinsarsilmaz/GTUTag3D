@@ -145,4 +145,22 @@ public class ButtonGroup : MonoBehaviour
         blurry.SetActive(false);
         loginModal.SetActive(false);
     }
+
+    public void signUp()
+    {
+        if (loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text != "" && loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text != "")
+        {
+            if (networking.signUp(gameData.userName, gameData.password))
+            {
+                gameData.userName = loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text;
+                gameData.password = loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text;
+                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TMP_InputField>().text = " Sucessful";
+            }
+            else
+            {
+                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TMP_InputField>().text = "Username already exists";
+            }
+
+        }
+    }
 }

@@ -30,8 +30,20 @@ def worker(conn, addr, sql):
         data = conn.recv(1024).decode()
         if not data:
             break
-        elif (data == "Hello"):
+        data = data.split(" ")
+        if (data[0] == "Hello"):
             conn.sendall("Hi".encode())
+        elif (data[0] == "Signup"):
+            sql.execute(
+                "SELECT * FROM players WHERE username = %s", (data[1],))
+            result = sql.fetchall()
+            if (len(result) > 0):
+                conn.sendall("Taken".encode())
+            else:
+                sql.execute(
+                    "INSERT INTO players (username, password, wins, losses) VALUES (%s, %s, %s, %s)", (data[1], data[2], 0, 0))
+                conn.sendall("Done".encode())
+
 
     conn.close()
 

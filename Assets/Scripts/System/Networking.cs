@@ -42,7 +42,7 @@ public class Networking : MonoBehaviour
 
     }
 
-    void signUp(string username, string password)
+    public bool signUp(string username, string password)
     {
         string request = "Signup " + username + " " + password;
         byte[] requestData = Encoding.UTF8.GetBytes(request);
@@ -50,7 +50,18 @@ public class Networking : MonoBehaviour
         byte[] data = new byte[256];
         int bytes = stream.Read(data, 0, data.Length);
         message = Encoding.UTF8.GetString(data, 0, bytes);
-        Debug.Log(message);
+        if (message == "Taken")
+        {
+            return false;
+        }
+        else if (message == "Done")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     void Update()
