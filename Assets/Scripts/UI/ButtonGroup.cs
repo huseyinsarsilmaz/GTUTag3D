@@ -154,11 +154,11 @@ public class ButtonGroup : MonoBehaviour
             {
                 gameData.userName = loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text;
                 gameData.password = loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text;
-                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TMP_InputField>().text = " Sucessful";
+                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = " Sucessful";
             }
             else
             {
-                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TMP_InputField>().text = "Username already exists";
+                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "Username already exists";
             }
 
         }
