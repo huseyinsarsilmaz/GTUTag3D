@@ -14,6 +14,12 @@ public class ButtonGroup : MonoBehaviour
     public GameObject optionsScene;
     public GameObject playModal;
     public GameObject blurry;
+    private GameData gameData;
+
+    public void Start()
+    {
+        gameData = FindObjectOfType<GameData>();
+    }
     
     public void subscribe(Button button)
     {
@@ -77,28 +83,30 @@ public class ButtonGroup : MonoBehaviour
     }
 
     public void changeSoundEffectSetting(){
-        if(GameData.isSound == true){
-            GameData.isSound = false;
+        if (gameData.isSound == true)
+        {
+            gameData.isSound = false;
             optionsScene.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
         }
         else{
-            GameData.isSound = true;
+            gameData.isSound = true;
             optionsScene.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
         }
-        if(GameData.isSound == true) this.GetComponent<AudioSource>().Play();
+        if (gameData.isSound == true) this.GetComponent<AudioSource>().Play();
 
     }
 
     public void changeMusicSetting(){
-        if(GameData.isMusic == true){
-            GameData.isMusic = false;
+        if (gameData.isMusic == true)
+        {
+            gameData.isMusic = false;
             optionsScene.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
         }
         else{
-            GameData.isMusic = true;
+            gameData.isMusic = true;
             optionsScene.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(true);
         }
-        if(GameData.isSound == true) this.GetComponent<AudioSource>().Play();
+        if (gameData.isSound == true) this.GetComponent<AudioSource>().Play();
 
     }
 
