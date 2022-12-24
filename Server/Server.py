@@ -16,7 +16,7 @@ def establishConnections(port: int):
         print("Connected to database")
     else:
         print("Failed to connected to database")
-        exit(1)
+        exit()
     cursor = db.cursor()
     sock.listen()
     print("Server Started...")
