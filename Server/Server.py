@@ -14,6 +14,16 @@ else:
     print("Failed to connected to database")
     exit(1)
 
+# create cursor to execute sql commands
+cursor = db.cursor()
+# get latest id from table players
+cursor.execute("SELECT id FROM players ORDER BY id DESC LIMIT 1")
+# get the result
+result = cursor.fetchone()
+# print the result
+print(result)
+print(type(result))
+
 
 sock.bind(("", port))
 sock.listen()
