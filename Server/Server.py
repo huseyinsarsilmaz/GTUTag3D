@@ -1,10 +1,8 @@
 import socket
 
-ip = "34.125.80.14"
 port = 3389
-
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.bind((ip, port))
+sock.bind(("", port))
 sock.listen()
 conn, addr = sock.accept()
 print("Connected to:", addr)
