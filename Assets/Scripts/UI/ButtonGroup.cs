@@ -197,15 +197,35 @@ public class ButtonGroup : MonoBehaviour
         changeToLobby();
     }
 
+    public void joinGame()
+    {
+        string gameId = playModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text;
+        string[] response = networking.createGame().Split(' ');
+        if (response[0] == "Failed")
+        {
+            playModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "Game not found";
+            playModal.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            gameData.gameId = response[0];
+            gameData.myTeam = response[1];
+            changeToLobby();
+        }
+
+    }
+
     public void changeToLobby()
     {
         lobby.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "GAME ID: " + gameData.gameId;
-        lobby.transform.GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = gameData.userName;
-        lobby.transform.GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(true);
-        lobby.transform.GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(1).gameObject.SetActive(true);
-        lobby.transform.GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(2).gameObject.SetActive(true);
+        Debug.Log(gameData.myTeam);
+        lobby.transform.GetChild(1).GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = gameData.userName;
+        lobby.transform.GetChild(1).GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(true);
+        lobby.transform.GetChild(1).GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(1).gameObject.SetActive(true);
+        lobby.transform.GetChild(1).GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(2).gameObject.SetActive(true);
         mainMenu.SetActive(false);
         lobby.SetActive(true);
+        gameData.gameState = 1;
     }
 
 

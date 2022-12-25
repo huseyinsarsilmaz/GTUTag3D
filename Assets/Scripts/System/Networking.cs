@@ -91,6 +91,27 @@ public class Networking : MonoBehaviour
         return message;
     }
 
+    public string joinGame(string gameId)
+    {
+        string request = "Join " + gameId;
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+        return message;
+    }
+
+    public string askLobbyStatus()
+    {
+        string request = "Lobby";
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+        return message;
+    }
+
+
     void Update()
     {
 

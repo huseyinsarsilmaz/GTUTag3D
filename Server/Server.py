@@ -35,7 +35,21 @@ def worker(conn, addr, db):
         if not data:
             break
         data = data.split(" ")
-        if (data[0] == "Hello"):
+
+        if (data[0] == "Lobby"):
+            response = ""
+            for team in teams:
+                response += str(team) + "-"
+                if (len(teams[team]) == 0):
+                    response += "Empty"
+                else:
+                    for player in teams[team]:
+                        response += players[player]["username"] + \
+                            "-" + players[player]["status"] + "-"
+                response += " "
+            conn.sendall(response.encode())
+
+        elif (data[0] == "Hello"):
             conn.sendall("Hi".encode())
 
         elif (data[0] == "Signup"):
@@ -56,10 +70,16 @@ def worker(conn, addr, db):
             result = sql.fetchall()
             if (len(result) > 0):
                 myid = result[0][0]
-                players[myid] = [0, 0, 0]
+                players[myid] = {
+                    "id": myid,
+                    "username": result[0][1],
+                    "status": "ready",
+                    "pos": [0, 0, 0]
+                }
                 conn.sendall("Done".encode())
             else:
                 conn.sendall("Failed".encode())
+
         elif (data[0] == "Create"):
             now = datetime.now()
             current_time = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -78,6 +98,21 @@ def worker(conn, addr, db):
             response = str(result[0][0]) + " " + str(team)
             conn.sendall(response.encode())
 
+        elif (data[0] == "Join"):
+            sql.execute("SELECT id FROM games WHERE id = %s", (data[1],))
+            result = sql.fetchall()
+            if (len(result) == 0):
+                conn.sendall("Failed".encode())
+            else:
+                while True:
+                    team = randint(1, 4)
+                    # TODO testing change to 3
+                    if (len(teams[team]) < 3):
+                        teams[team].append(myid)
+                        myteam = team
+                        break
+                response = str(result[0][0]) + " " + str(team)
+                conn.sendall(response.encode())
     conn.close()
 
 
