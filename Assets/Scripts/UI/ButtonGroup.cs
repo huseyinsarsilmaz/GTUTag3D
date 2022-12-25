@@ -17,6 +17,8 @@ public class ButtonGroup : MonoBehaviour
     public GameObject blurry;
     private GameData gameData;
     private Networking networking;
+    public GameObject mainMenu;
+    public GameObject lobby;
 
     public void Start()
     {
@@ -145,7 +147,7 @@ public class ButtonGroup : MonoBehaviour
 
     public void closeLoginModal()
     {
-        playModal.SetActive(true);
+        openPlayModal();
         loginModal.SetActive(false);
     }
 
@@ -186,6 +188,18 @@ public class ButtonGroup : MonoBehaviour
             }
 
         }
+    }
+
+    public void createGame()
+    {
+        gameData.gameId = networking.createGame();
+    }
+
+    public void changeToLobby()
+    {
+        lobby.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "GAME ID: " + gameData.gameId;
+        mainMenu.SetActive(false);
+        lobby.SetActive(true);
     }
 
 

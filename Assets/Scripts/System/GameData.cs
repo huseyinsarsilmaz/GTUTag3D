@@ -10,6 +10,7 @@ public class GameData : MonoBehaviour
     public bool isConnected = false;
     public string userName = "";
     public string password = "";
+    public string gameId = "";
 
     void Start()
     {

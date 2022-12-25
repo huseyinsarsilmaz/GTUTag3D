@@ -1,5 +1,6 @@
 import socket
 import mysql.connector
+from datetime import datetime
 from _thread import *
 
 
@@ -54,6 +55,17 @@ def worker(conn, addr, db):
                 conn.sendall("Done".encode())
             else:
                 conn.sendall("Failed".encode())
+        elif (data[0] == "Create"):
+            now = datetime.now()
+            current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+            sql.execute(
+                "INSERT INTO games (date, players, winners) VALUES (%s, %s, %s)", (current_time, "N N N N N N N N N N N N", "N N N"))
+            result = sql.fetchall()
+            db.commit()
+            # get the id of the game
+            sql.execute("SELECT id FROM games ORDER BY id DESC LIMIT 1")
+            result = sql.fetchall()
+            conn.sendall(str(result[0][0]).encode())
 
 
     conn.close()
