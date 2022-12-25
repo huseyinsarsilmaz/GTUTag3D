@@ -57,7 +57,7 @@ def worker(conn, addr, db):
             if (len(result) > 0):
                 myid = result[0][0]
                 players[myid] = [0, 0, 0]
-                conn.sendall("Done")
+                conn.sendall("Done".encode())
             else:
                 conn.sendall("Failed".encode())
         elif (data[0] == "Create"):
