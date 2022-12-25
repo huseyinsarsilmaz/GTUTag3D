@@ -46,6 +46,7 @@ def worker(conn, addr, db):
                     for player in teams[team]:
                         response += players[player]["username"] + \
                             "-" + players[player]["status"] + "-"
+                response = response[:-1]
                 response += " "
             conn.sendall(response.encode())
 

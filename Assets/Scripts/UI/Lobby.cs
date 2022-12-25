@@ -35,10 +35,20 @@ public class Lobby : MonoBehaviour
         if (gameData.gameState == 1)
         {
             string response = networking.askLobbyStatus();
+            Debug.Log(response);
             string[] teams = response.Split(' ');
             foreach (string team in teams)
             {
                 string[] teamData = team.Split('-');
+                string dbg = "";
+                foreach (string s in teamData)
+                {
+
+                    dbg += s;
+
+                }
+                Debug.Log(dbg);
+
                 if (teamData[1] != "Empty")
                 {
                     int iter = (teamData.Length - 1) / 2;
