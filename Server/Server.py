@@ -49,6 +49,7 @@ def worker(conn, addr, db):
                 if (response[-1] == "-"):
                     response = response[:-1]
                 response += " "
+            response = response[:-1]
             conn.sendall(response.encode())
 
         elif (data[0] == "Hello"):

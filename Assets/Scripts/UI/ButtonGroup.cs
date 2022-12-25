@@ -218,7 +218,6 @@ public class ButtonGroup : MonoBehaviour
     public void changeToLobby()
     {
         lobby.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "GAME ID: " + gameData.gameId;
-        Debug.Log(gameData.myTeam);
         lobby.transform.GetChild(1).GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = gameData.userName;
         lobby.transform.GetChild(1).GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(true);
         lobby.transform.GetChild(1).GetChild(1).GetChild(int.Parse(gameData.myTeam) - 1).GetChild(1).GetChild(0).GetChild(1).gameObject.SetActive(true);
