@@ -76,7 +76,7 @@ def worker(conn, addr, db):
                     myteam = team
                     break
             response = str(result[0][0]) + " " + str(team)
-            conn.sendall(str(result[0][0]).encode())
+            conn.sendall(response.encode())
 
     conn.close()
 
