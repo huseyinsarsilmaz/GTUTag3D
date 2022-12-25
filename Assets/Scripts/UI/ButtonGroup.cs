@@ -132,7 +132,6 @@ public class ButtonGroup : MonoBehaviour
             playModal.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
             playModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text = "";
             playModal.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
-            playModal.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
             blurry.SetActive(true);
             playModal.SetActive(true);
         }
@@ -193,6 +192,7 @@ public class ButtonGroup : MonoBehaviour
     public void createGame()
     {
         gameData.gameId = networking.createGame();
+        changeToLobby();
     }
 
     public void changeToLobby()
