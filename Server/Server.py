@@ -2,6 +2,7 @@ import socket
 import mysql.connector
 from datetime import datetime
 from _thread import *
+from random import randint
 
 
 def establishConnections(port: int):
@@ -26,6 +27,8 @@ def establishConnections(port: int):
 def worker(conn, addr, db):
     global players
     sql = db.cursor()
+    myid = -1
+    myteam = -1
     print("Connected to:", addr)
     while True:
         data = conn.recv(1024).decode()
@@ -52,8 +55,9 @@ def worker(conn, addr, db):
                 "SELECT * FROM players WHERE username = %s AND password = %s", (data[1], data[2]))
             result = sql.fetchall()
             if (len(result) > 0):
-                print(result)
-                conn.sendall("Done".encode())
+                myid = result[0][0]
+                players[myid] = [0, 0, 0]
+                conn.sendall("Done")
             else:
                 conn.sendall("Failed".encode())
         elif (data[0] == "Create"):
@@ -65,14 +69,26 @@ def worker(conn, addr, db):
             db.commit()
             sql.execute("SELECT id FROM games ORDER BY id DESC LIMIT 1")
             result = sql.fetchall()
+            while True:
+                team = randint(1, 4)
+                if (len(teams[team]) < 3):
+                    teams[team].append(myid)
+                    myteam = team
+                    break
+            response = str(result[0][0]) + " " + str(team)
             conn.sendall(str(result[0][0]).encode())
-
 
     conn.close()
 
 
 sock, db = establishConnections(3389)
-players = []
+players = {}
+teams = {
+    1: [],
+    2: [],
+    3: [],
+    4: []
+}
 
 while True:
     conn, addr = sock.accept()

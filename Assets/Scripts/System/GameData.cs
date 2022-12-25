@@ -11,6 +11,7 @@ public class GameData : MonoBehaviour
     public string userName = "";
     public string password = "";
     public string gameId = "";
+    public string myTeam = "";
 
     void Start()
     {
