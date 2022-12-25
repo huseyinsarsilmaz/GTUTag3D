@@ -117,17 +117,20 @@ public class ButtonGroup : MonoBehaviour
     public void openPlayModal(){
         if (gameData.userName == "")
         {
+            loginModal.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
             loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text = "";
-            loginModal.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
+            loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text = "";
+            loginModal.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
+            loginModal.transform.GetChild(1).GetChild(3).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
             blurry.SetActive(true);
             loginModal.SetActive(true);
         }
         else
         {
+            playModal.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
             playModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text = "";
-            playModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text = "";
+            playModal.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
             playModal.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
-            playModal.transform.GetChild(1).GetChild(3).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().color = disabledColor;
             blurry.SetActive(true);
             playModal.SetActive(true);
         }
@@ -148,9 +151,11 @@ public class ButtonGroup : MonoBehaviour
 
     public void signUp()
     {
-        if (loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text != "" && loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text != "")
+        string text1 = loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text;
+        string text2 = loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text;
+        if (text1 != "" && text2 != "")
         {
-            if (networking.signUp(loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text, loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text))
+            if (networking.signUp(text1, text2))
             {
 
                 loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = " Sucessful";
@@ -159,6 +164,7 @@ public class ButtonGroup : MonoBehaviour
             {
                 loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "Username already exists";
             }
+            loginModal.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
 
         }
     }
@@ -175,7 +181,8 @@ public class ButtonGroup : MonoBehaviour
             }
             else
             {
-                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "User not found";
+                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "Wrong username or password";
+                loginModal.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
             }
 
         }
