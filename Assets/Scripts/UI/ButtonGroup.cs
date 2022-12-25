@@ -142,7 +142,7 @@ public class ButtonGroup : MonoBehaviour
 
     public void closeLoginModal()
     {
-        blurry.SetActive(false);
+        playModal.SetActive(true);
         loginModal.SetActive(false);
     }
 
@@ -150,10 +150,9 @@ public class ButtonGroup : MonoBehaviour
     {
         if (loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text != "" && loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text != "")
         {
-            if (networking.signUp(gameData.userName, gameData.password))
+            if (networking.signUp(loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text, loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text))
             {
-                gameData.userName = loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text;
-                gameData.password = loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text;
+
                 loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = " Sucessful";
             }
             else
@@ -163,4 +162,24 @@ public class ButtonGroup : MonoBehaviour
 
         }
     }
+
+    public void login()
+    {
+        if (loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text != "" && loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text != "")
+        {
+            if (networking.login(loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text, loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text))
+            {
+                gameData.userName = loginModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text;
+                gameData.password = loginModal.transform.GetChild(1).GetChild(1).GetComponent<TMPro.TMP_InputField>().text;
+                closeLoginModal();
+            }
+            else
+            {
+                loginModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "User not found";
+            }
+
+        }
+    }
+
+
 }

@@ -15,6 +15,7 @@ public class Networking : MonoBehaviour
     TcpClient client;
     NetworkStream stream;
     string message;
+    byte[] data = new byte[256];
 
     void Start()
     {
@@ -47,10 +48,30 @@ public class Networking : MonoBehaviour
         string request = "Signup " + username + " " + password;
         byte[] requestData = Encoding.UTF8.GetBytes(request);
         stream.Write(requestData, 0, requestData.Length);
-        byte[] data = new byte[256];
         int bytes = stream.Read(data, 0, data.Length);
         message = Encoding.UTF8.GetString(data, 0, bytes);
         if (message == "Taken")
+        {
+            return false;
+        }
+        else if (message == "Done")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool login(string username, string password)
+    {
+        string request = "Login " + username + " " + password;
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+        if (message == "Failed")
         {
             return false;
         }

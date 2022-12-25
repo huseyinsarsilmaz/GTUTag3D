@@ -33,6 +33,7 @@ def worker(conn, addr, db):
         data = data.split(" ")
         if (data[0] == "Hello"):
             conn.sendall("Hi".encode())
+
         elif (data[0] == "Signup"):
             sql.execute(
                 "SELECT * FROM players WHERE username = %s", (data[1],))
@@ -44,6 +45,15 @@ def worker(conn, addr, db):
                     "INSERT INTO players (username, password, wins, loses) VALUES (%s, %s, %s, %s)", (data[1], data[2], 0, 0))
                 db.commit()
                 conn.sendall("Done".encode())
+
+        elif (data[0] == "Login"):
+            sql.execute(
+                "SELECT * FROM players WHERE username = %s AND password = %s", (data[1], data[2]))
+            result = sql.fetchall()
+            if (len(result) > 0):
+                conn.sendall("Done".encode())
+            else:
+                conn.sendall("Failed".encode())
 
 
     conn.close()
