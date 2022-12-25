@@ -11,7 +11,7 @@ def establishConnections(port: int):
         sock.bind(("", port))
     except socket.error as e:
         print(str(e))
-        exit(1)
+        exit()
     db = mysql.connector.connect(
         host="localhost", user="root", passwd="12345678", database="gtutag3d")
     if (db.is_connected()):
