@@ -200,7 +200,7 @@ public class ButtonGroup : MonoBehaviour
     public void joinGame()
     {
         string gameId = playModal.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TMP_InputField>().text;
-        string[] response = networking.createGame().Split(' ');
+        string[] response = networking.joinGame(gameId).Split(' ');
         if (response[0] == "Failed")
         {
             playModal.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "Game not found";
