@@ -136,6 +136,7 @@ def worker(conn, addr, db):
                 if (player["status"] == "ready"):
                     readyCount += 1
             # FIXME testing change to 12
+            print(readyCount)
             if (readyCount == 4):
                 print("Beginning signal sent")
                 conn.sendall("Yes".encode())
@@ -161,5 +162,4 @@ teams = {
 
 while True:
     conn, addr = sock.accept()
-    print("burdayim")
     start_new_thread(worker, (conn, addr, db))
