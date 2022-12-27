@@ -43,6 +43,7 @@ public class Lobby : MonoBehaviour
             System.Threading.Thread.Sleep(1000);
             gameData.gameState = 2;
             networking.startGame();
+            Debug.Log("Burdayim");
             SceneManager.LoadScene("Game");
             return;
         }

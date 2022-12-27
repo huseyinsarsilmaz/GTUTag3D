@@ -137,6 +137,7 @@ def worker(conn, addr, db):
                     readyCount += 1
             # FIXME testing change to 12
             if (readyCount == 4):
+                print("Beginning signal sent")
                 conn.sendall("Yes".encode())
             else:
                 conn.sendall("No".encode())
@@ -144,6 +145,7 @@ def worker(conn, addr, db):
 
         elif (data[0] == "Start"):
             isBegin = True
+            print("Change server begin data")
             conn.sendall("Done".encode())
     conn.close()
 
