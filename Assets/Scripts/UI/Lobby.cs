@@ -55,11 +55,13 @@ public class Lobby : MonoBehaviour
                         GameObject card = cards[int.Parse(teamData[0]) - 1][i];
                         if (teamData[2 * i + 2] == "ready")
                         {
+                            gameData.myStatus = 1;
                             card.transform.GetChild(2).GetChild(0).GetComponent<Image>().color = greenColor;
                             card.transform.GetChild(2).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "Ready";
                         }
                         else
                         {
+                            gameData.myStatus = 0;
                             card.transform.GetChild(2).GetChild(0).GetComponent<Image>().color = redColor;
                             card.transform.GetChild(2).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "Not Ready";
                         }

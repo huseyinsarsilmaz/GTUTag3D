@@ -111,6 +111,15 @@ public class Networking : MonoBehaviour
         return message;
     }
 
+    public void changeStatus()
+    {
+        string request = "Status";
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+    }
+
 
     void Update()
     {

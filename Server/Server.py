@@ -116,6 +116,13 @@ def worker(conn, addr, db):
                         break
                 response = str(result[0][0]) + " " + str(team)
                 conn.sendall(response.encode())
+
+        elif (data[0] == "Status"):
+            if (players[myid]["status"] == "ready"):
+                players[myid]["status"] = "notready"
+            else:
+                players[myid]["status"] = "ready"
+            conn.sendall("Done".encode())
     conn.close()
 
 
