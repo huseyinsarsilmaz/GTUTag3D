@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class Networking : MonoBehaviour
 {
-    public string serverIP = "34.125.136.30";
-    public int serverPort = 3389;
+    public string serverIP;
+    public int serverPort;
     public static Networking instance;
     IPAddress ipAddress;
     TcpClient client;
@@ -27,12 +27,16 @@ public class Networking : MonoBehaviour
             return;
         }
         GameObject.DontDestroyOnLoad(this.gameObject);
+        serverIP = "34.125.113.254";
+        serverPort = 3389;
+
         //connect to server
         ipAddress = IPAddress.Parse(serverIP);
         client = new TcpClient();
         // connect to server on port 3389 in try catch block
         try
         {
+            Debug.Log("ipAddress: " + serverIP + " serverPort: " + serverPort);
             client.Connect(ipAddress, serverPort);
         }
         catch (SocketException e)
