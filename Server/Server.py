@@ -25,12 +25,11 @@ def establishConnections(port: int):
 
 
 def worker(conn, addr, db):
-    global players
+    global players, isBegin
     sql = db.cursor()
     myid = -1
     myteam = -1
     readyCount = 0
-    isBegin = False
     print("Connected to:", addr)
     while True:
         data = conn.recv(1024).decode()
@@ -152,6 +151,7 @@ def worker(conn, addr, db):
 
 
 sock, db = establishConnections(3389)
+isBegin = False
 players = {}
 teams = {
     1: [],
