@@ -103,7 +103,7 @@ def worker(conn, addr, db):
                     teams[team].append(myid)
                     myteam = team
                     break
-            player[myid]["status"] = "ready"
+            players[myid]["status"] = "ready"
             response = str(result[0][0]) + " " + str(team)
             conn.sendall(response.encode())
 
