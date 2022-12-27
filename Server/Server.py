@@ -121,7 +121,7 @@ def worker(conn, addr, db):
                         myteam = team
                         break
                 response = str(result[0][0]) + " " + str(team)
-                player[myid]["status"] = "ready"
+                players[myid]["status"] = "ready"
                 conn.sendall(response.encode())
 
         elif (data[0] == "Status"):
