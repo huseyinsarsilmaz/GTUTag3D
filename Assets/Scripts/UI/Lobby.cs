@@ -35,7 +35,6 @@ public class Lobby : MonoBehaviour
         if (gameData.gameState == 1)
         {
             string response = networking.askLobbyStatus();
-            Debug.Log(response);
             string[] teams = response.Split(' ');
             foreach (string team in teams)
             {
@@ -47,7 +46,6 @@ public class Lobby : MonoBehaviour
                     dbg += s;
 
                 }
-                Debug.Log(dbg);
 
                 if (teamData[1] != "Empty")
                 {
