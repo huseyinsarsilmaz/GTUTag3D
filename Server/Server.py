@@ -137,4 +137,5 @@ teams = {
 
 while True:
     conn, addr = sock.accept()
+    print("burdayim")
     start_new_thread(worker, (conn, addr, db))
