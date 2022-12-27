@@ -194,6 +194,7 @@ public class ButtonGroup : MonoBehaviour
         string[] response = networking.createGame().Split(' ');
         gameData.gameId = response[0];
         gameData.myTeam = response[1];
+        gameData.creator = true;
         changeToLobby();
     }
 

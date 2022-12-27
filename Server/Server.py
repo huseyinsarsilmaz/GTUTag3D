@@ -29,6 +29,8 @@ def worker(conn, addr, db):
     sql = db.cursor()
     myid = -1
     myteam = -1
+    readyCount = 0
+    isBegin = False
     print("Connected to:", addr)
     while True:
         data = conn.recv(1024).decode()
@@ -37,20 +39,23 @@ def worker(conn, addr, db):
         data = data.split(" ")
 
         if (data[0] == "Lobby"):
-            response = ""
-            for team in teams:
-                response += str(team) + "-"
-                if (len(teams[team]) == 0):
-                    response += "Empty"
-                else:
-                    for player in teams[team]:
-                        response += players[player]["username"] + \
-                            "-" + players[player]["status"] + "-"
-                if (response[-1] == "-"):
-                    response = response[:-1]
-                response += " "
-            response = response[:-1]
-            conn.sendall(response.encode())
+            if (isBegin):
+                conn.sendall("Begin".encode())
+            else:
+                response = ""
+                for team in teams:
+                    response += str(team) + "-"
+                    if (len(teams[team]) == 0):
+                        response += "Empty"
+                    else:
+                        for player in teams[team]:
+                            response += players[player]["username"] + \
+                                "-" + players[player]["status"] + "-"
+                    if (response[-1] == "-"):
+                        response = response[:-1]
+                    response += " "
+                response = response[:-1]
+                conn.sendall(response.encode())
 
         elif (data[0] == "Hello"):
             conn.sendall("Hi".encode())
@@ -122,6 +127,21 @@ def worker(conn, addr, db):
                 players[myid]["status"] = "notready"
             else:
                 players[myid]["status"] = "ready"
+            conn.sendall("Done".encode())
+
+        elif (data[0] == "isBegin"):
+            for player in players.values():
+                if (player["status"] == "ready"):
+                    readyCount += 1
+            # FIXME testing change to 12
+            if (readyCount == 4):
+                conn.sendall("Yes".encode())
+            else:
+                conn.sendall("No".encode())
+                readyCount = 0
+
+        elif (data[0] == "Start"):
+            isBegin = True
             conn.sendall("Done".encode())
     conn.close()
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Lobby : MonoBehaviour
 {
@@ -27,14 +28,32 @@ public class Lobby : MonoBehaviour
                 cards[i].Add(this.transform.GetChild(i).GetChild(1).GetChild(j).gameObject);
             }
         }
+        //create a timer to check lobby status
+        InvokeRepeating("askLobbyStatus", 0.0f, 0.64f);
+        //CancelInvoke("askLobbyStatus");
     }
 
     // Update is called once per frame
-    void Update()
+
+    void askLobbyStatus()
     {
+        if (gameData.creator && networking.canGameBegin())
+        {
+            gameData.gameState = 2;
+            networking.startGame();
+            SceneManager.LoadScene("Game");
+            return;
+        }
+
         if (gameData.gameState == 1)
         {
             string response = networking.askLobbyStatus();
+            if (response == "Begin")
+            {
+                gameData.gameState = 2;
+                SceneManager.LoadScene("Game");
+                return;
+            }
             string[] teams = response.Split(' ');
             foreach (string team in teams)
             {
@@ -77,5 +96,4 @@ public class Lobby : MonoBehaviour
             }
         }
     }
-
 }

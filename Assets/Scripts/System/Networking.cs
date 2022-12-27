@@ -133,6 +133,25 @@ public class Networking : MonoBehaviour
         message = Encoding.UTF8.GetString(data, 0, bytes);
     }
 
+    public bool canGameBegin()
+    {
+        string request = "isBegin";
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+        return message == "Yes";
+    }
+
+    public void startGame()
+    {
+        string request = "Start";
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+    }
+
 
     void Update()
     {
