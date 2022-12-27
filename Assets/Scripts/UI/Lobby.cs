@@ -39,6 +39,8 @@ public class Lobby : MonoBehaviour
     {
         if (gameData.creator && networking.canGameBegin())
         {
+            //sleep for 1 second
+            System.Threading.Thread.Sleep(1000);
             gameData.gameState = 2;
             networking.startGame();
             SceneManager.LoadScene("Game");

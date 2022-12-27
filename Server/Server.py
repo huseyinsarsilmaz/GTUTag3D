@@ -81,7 +81,7 @@ def worker(conn, addr, db):
                 players[myid] = {
                     "id": myid,
                     "username": result[0][1],
-                    "status": "ready",
+                    "status": "login",
                     "pos": [0, 0, 0]
                 }
                 conn.sendall("Done".encode())
@@ -103,6 +103,7 @@ def worker(conn, addr, db):
                     teams[team].append(myid)
                     myteam = team
                     break
+            player[myid]["status"] = "ready"
             response = str(result[0][0]) + " " + str(team)
             conn.sendall(response.encode())
 
@@ -120,6 +121,7 @@ def worker(conn, addr, db):
                         myteam = team
                         break
                 response = str(result[0][0]) + " " + str(team)
+                player[myid]["status"] = "ready"
                 conn.sendall(response.encode())
 
         elif (data[0] == "Status"):
