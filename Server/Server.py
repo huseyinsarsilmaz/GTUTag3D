@@ -59,7 +59,6 @@ def worker(conn, addr, db):
         elif (data[0] == "getPlayers"):
             response = ""
             for player in players.values():
-                if (player["id"] != myid):
                     response += str(player["id"]) + "-"
                     response += player["username"] + "-"
                     response += str(player["pos"][0]) + "-"

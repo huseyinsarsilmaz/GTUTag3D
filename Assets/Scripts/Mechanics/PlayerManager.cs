@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
         //FIXME change to 12
         for (int i = 0; i < 4; i++)
         {
+            Debug.Log(playerlist[i]);
             string[] player = playerlist[i].Split('-');
             players.Add(int.Parse(player[0]), this.transform.GetChild(i).gameObject);
             players[int.Parse(player[0])].transform.GetChild(9).GetComponent<TMPro.TextMeshPro>().text = player[1];
