@@ -60,7 +60,7 @@ def worker(conn, addr, db):
             response = ""
             for player in players.values():
                 if (player["id"] != myid):
-                    response += player["id"] + "-"
+                    response += str(player["id"]) + "-"
                     response += player["username"] + "-"
                     response += str(player["pos"][0]) + "-"
                     response += str(player["pos"][1]) + "-"
