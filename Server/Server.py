@@ -165,7 +165,15 @@ def worker(conn, addr, db):
         elif (data[0] == "mypos"):
             players[myid]["pos"] = [
                 float(data[1]), float(data[2]), float(data[3])]
-            conn.sendall("Done".encode())
+            response = ""
+            for player in players.values():
+                if (player["id"] != myid):
+                    response += str(player["id"]) + "-"
+                    response += str(player["pos"][0]) + "-"
+                    response += str(player["pos"][1]) + "-"
+                    response += str(player["pos"][2]) + " "
+            response = response[:-1]
+            conn.sendall(response.encode())
 
     conn.close()
 
