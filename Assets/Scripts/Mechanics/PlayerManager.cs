@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
         string response = networking.getPlayerData();
         string[] playerlist = response.Split(' ');
         //FIXME change to 12
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             Debug.Log(playerlist[i]);
             string[] player = playerlist[i].Split('-');

@@ -148,7 +148,7 @@ def worker(conn, addr, db):
                 if (player["status"] == "ready"):
                     readyCount += 1
             # FIXME testing change to 12
-            if (readyCount == 4):
+            if (readyCount == 2):
                 counter = 0
                 for player in players.values():
                     player["pos"] = [counter * 20, 0, 0]
