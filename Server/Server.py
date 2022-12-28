@@ -53,7 +53,7 @@ def worker(conn, addr, db):
                     if (response[-1] == "-"):
                         response = response[:-1]
                     response += " "
-                response += myid
+                response = response[:-1]
                 conn.sendall(response.encode())
 
         elif (data[0] == "getPlayers"):
@@ -67,10 +67,7 @@ def worker(conn, addr, db):
                     response += str(player["pos"][2]) + " "
                     response = response[:-1]
                     response += " "
-            response = response[:-1]
-            conn.sendall(response.encode())
-
-            response = response[:-1]
+            response += str(myid)
             conn.sendall(response.encode())
 
         elif (data[0] == "Hello"):
