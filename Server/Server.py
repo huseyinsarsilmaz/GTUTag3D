@@ -152,6 +152,7 @@ def worker(conn, addr, db):
                 counter = 0
                 for player in players.values():
                     player["pos"] = [counter * 20, 0, 0]
+                    counter += 1
                 conn.sendall("Yes".encode())
             else:
                 conn.sendall("No".encode())
