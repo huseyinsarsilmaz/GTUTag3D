@@ -27,7 +27,7 @@ public class Networking : MonoBehaviour
             return;
         }
         GameObject.DontDestroyOnLoad(this.gameObject);
-        serverIP = "34.125.113.254";
+        serverIP = "34.125.136.30";
         serverPort = 3389;
 
         //connect to server
@@ -150,6 +150,16 @@ public class Networking : MonoBehaviour
         stream.Write(requestData, 0, requestData.Length);
         int bytes = stream.Read(data, 0, data.Length);
         message = Encoding.UTF8.GetString(data, 0, bytes);
+    }
+
+    public string getPlayerData()
+    {
+        string request = "getPlayers";
+        byte[] requestData = Encoding.UTF8.GetBytes(request);
+        stream.Write(requestData, 0, requestData.Length);
+        int bytes = stream.Read(data, 0, data.Length);
+        message = Encoding.UTF8.GetString(data, 0, bytes);
+        return message;
     }
 
 

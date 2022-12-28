@@ -53,8 +53,25 @@ def worker(conn, addr, db):
                     if (response[-1] == "-"):
                         response = response[:-1]
                     response += " "
-                response = response[:-1]
+                response += myid
                 conn.sendall(response.encode())
+
+        elif (data[0] == "getPlayers"):
+            response = ""
+            for player in players.values():
+                if (player["id"] != myid):
+                    response += player["id"] + "-"
+                    response += player["username"] + "-"
+                    response += str(player["pos"][0]) + "-"
+                    response += str(player["pos"][1]) + "-"
+                    response += str(player["pos"][2]) + " "
+                    response = response[:-1]
+                    response += " "
+            response = response[:-1]
+            conn.sendall(response.encode())
+
+            response = response[:-1]
+            conn.sendall(response.encode())
 
         elif (data[0] == "Hello"):
             conn.sendall("Hi".encode())
@@ -135,9 +152,10 @@ def worker(conn, addr, db):
                 if (player["status"] == "ready"):
                     readyCount += 1
             # FIXME testing change to 12
-            print(readyCount)
             if (readyCount == 4):
-                print("Beginning signal sent")
+                counter = 0
+                for player in players.values():
+                    player["pos"] = [counter * 20, 0, 0]
                 conn.sendall("Yes".encode())
             else:
                 conn.sendall("No".encode())
@@ -145,7 +163,6 @@ def worker(conn, addr, db):
 
         elif (data[0] == "Start"):
             isBegin = True
-            print("Change server begin data")
             conn.sendall("Done".encode())
     conn.close()
 
