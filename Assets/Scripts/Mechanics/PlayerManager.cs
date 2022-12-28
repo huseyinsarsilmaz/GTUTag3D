@@ -23,13 +23,15 @@ public class PlayerManager : MonoBehaviour
     {
         string response = networking.getPlayerData();
         string[] playerlist = response.Split(' ');
-        for (int i = 0; i < playerlist.Length; i++)
+        //FIXME change to 12
+        for (int i = 0; i < 4; i++)
         {
             string[] player = playerlist[i].Split('-');
             players.Add(int.Parse(player[0]), this.transform.GetChild(i).gameObject);
             players[int.Parse(player[0])].transform.GetChild(9).GetComponent<TMPro.TextMeshPro>().text = player[1];
             players[int.Parse(player[0])].transform.position = new Vector3(float.Parse(player[2]), float.Parse(player[3]), float.Parse(player[4]));
         }
+        myId = int.Parse(playerlist[4]);
     }
 
     // Update is called once per frame
