@@ -161,6 +161,12 @@ def worker(conn, addr, db):
         elif (data[0] == "Start"):
             isBegin = True
             conn.sendall("Done".encode())
+
+        elif (data[0] == "mypos"):
+            players[myid]["pos"] = [
+                float(data[1]), float(data[2]), float(data[3])]
+            conn.sendall("Done".encode())
+
     conn.close()
 
 

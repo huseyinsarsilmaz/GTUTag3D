@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     private Dictionary<int, GameObject> players;
     private int myId;
 
+    private string request;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +37,10 @@ public class PlayerManager : MonoBehaviour
         myId = int.Parse(playerlist[4]);
     }
 
-    // Update is called once per frame
-    void Update()
+    // fixed update is called once per frame
+    void FixedUpdate()
     {
-        
+        request = players[myId].transform.position.x + " " + players[myId].transform.position.y + " " + players[myId].transform.position.z;
+        networking.updateMyPos(request);
     }
 }
