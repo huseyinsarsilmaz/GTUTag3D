@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     private Dictionary<int, GameObject> players;
     public GameObject camera;
     private int myId;
+    private Dictionary<int, Vector3> playerPositions;
+    private Dictionary<int, Quaternion> playerRotations;
 
     private string request;
     private string[] positions;
@@ -20,9 +22,12 @@ public class PlayerManager : MonoBehaviour
         gameData = FindObjectOfType<GameData>();
         networking = FindObjectOfType<Networking>();
         players = new Dictionary<int, GameObject>();
+        playerPositions = new Dictionary<int, Vector3>();
+        playerRotations = new Dictionary<int, Quaternion>();
         getPlayers();
         //create a thread for updating player positions
         Thread t = new Thread(new ThreadStart(updatePlayerPos));
+        t.Start();
 
     }
 
@@ -39,9 +44,11 @@ public class PlayerManager : MonoBehaviour
             players[int.Parse(player[0])].transform.GetChild(9).GetComponent<TMPro.TextMeshPro>().text = player[1];
             players[int.Parse(player[0])].transform.position = new Vector3(float.Parse(player[2]), float.Parse(player[3]), float.Parse(player[4]));
             players[int.Parse(player[0])].transform.rotation = new Quaternion(float.Parse(player[5]), float.Parse(player[6]), float.Parse(player[7]), 1);
+            playerPositions.Add(int.Parse(player[0]), new Vector3(float.Parse(player[2]), float.Parse(player[3]), float.Parse(player[4])));
+            playerRotations.Add(int.Parse(player[0]), new Quaternion(float.Parse(player[5]), float.Parse(player[6]), float.Parse(player[7]), 1));
         }
         myId = int.Parse(playerlist[2]);
-        camera.transform.position = new Vector3(players[myId].transform.position.x, players[myId].transform.position.y + 18, players[myId].transform.position.z - 20);
+        camera.transform.position = new Vector3(playerPositions[myId].x, playerPositions[myId].y + 18, playerPositions[myId].z - 20);
     }
 
     // fixed update is called once per frame
@@ -65,13 +72,25 @@ public class PlayerManager : MonoBehaviour
         {
             players[myId].transform.Rotate(0, -1, 0);
             //rotate camera around player
-            camera.transform.RotateAround(players[myId].transform.position, Vector3.up, -1);
+            camera.transform.RotateAround(playerPositions[myId], Vector3.up, -1);
         }
         if (Input.GetKey(KeyCode.D))
         {
             players[myId].transform.Rotate(0, 1, 0);
             //rotate camera around player
-            camera.transform.RotateAround(players[myId].transform.position, Vector3.up, 1);
+            camera.transform.RotateAround(playerPositions[myId], Vector3.up, 1);
+        }
+
+        playerPositions[myId] = players[myId].transform.position;
+        playerRotations[myId] = players[myId].transform.rotation;
+
+        foreach (KeyValuePair<int, GameObject> player in players)
+        {
+            if (player.Key != myId)
+            {
+                player.Value.transform.position = playerPositions[player.Key];
+                player.Value.transform.rotation = playerRotations[player.Key];
+            }
         }
     }
 
@@ -79,14 +98,16 @@ public class PlayerManager : MonoBehaviour
     {
         while (true)
         {
-            request = players[myId].transform.position.x + " " + players[myId].transform.position.y + " " + players[myId].transform.position.z + " " + players[myId].transform.rotation.x + " " + players[myId].transform.rotation.y + " " + players[myId].transform.rotation.z;
+            Debug.Log("burdayim");
+            request = playerPositions[myId].x + " " + playerPositions[myId].y + " " + playerPositions[myId].z + " " + playerRotations[myId].x + " " + playerRotations[myId].y + " " + playerRotations[myId].z;
             positions = networking.updateMyPos(request).Split(' ');
             for (int i = 0; i < positions.Length; i++)
             {
                 string[] player = positions[i].Split('-');
-                players[int.Parse(player[0])].transform.position = new Vector3(float.Parse(player[1]), float.Parse(player[2]), float.Parse(player[3]));
-                players[int.Parse(player[0])].transform.rotation = new Quaternion(float.Parse(player[4]), float.Parse(player[5]), float.Parse(player[6]), 1);
+                playerPositions[int.Parse(player[0])] = new Vector3(float.Parse(player[1]), float.Parse(player[2]), float.Parse(player[3]));
+                playerRotations[int.Parse(player[0])] = new Quaternion(float.Parse(player[4]), float.Parse(player[5]), float.Parse(player[6]), 1);
             }
+            Debug.Log("burdayim2");
         }
     }
 }

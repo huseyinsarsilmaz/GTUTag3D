@@ -166,8 +166,11 @@ public class Networking : MonoBehaviour
     {
         string request = "mypos" + pos;
         byte[] requestData = Encoding.UTF8.GetBytes(request);
+        Debug.Log("sending request");
         stream.Write(requestData, 0, requestData.Length);
+        Debug.Log("request sent");
         int bytes = stream.Read(data, 0, data.Length);
+        Debug.Log("response received");
         message = Encoding.UTF8.GetString(data, 0, bytes);
         return message;
     }
