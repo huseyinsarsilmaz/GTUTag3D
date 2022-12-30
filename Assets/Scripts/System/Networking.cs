@@ -164,7 +164,7 @@ public class Networking : MonoBehaviour
 
     public string updateMyPos(string pos)
     {
-        string request = "mypos" + pos;
+        string request = "mypos " + pos;
         byte[] requestData = Encoding.UTF8.GetBytes(request);
         Debug.Log("sending request");
         stream.Write(requestData, 0, requestData.Length);
