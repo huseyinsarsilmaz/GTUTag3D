@@ -166,7 +166,6 @@ def worker(conn, addr, db):
             conn.sendall("Done".encode())
 
         elif (data[0] == "mypos"):
-            print("got request")
             players[myid]["pos"] = [
                 float(data[1]), float(data[2]), float(data[3]), float(
                     data[4]), float(data[5]), float(data[6])]
@@ -181,9 +180,7 @@ def worker(conn, addr, db):
                     response += str(player["pos"][4]) + "-"
                     response += str(player["pos"][5]) + " "
             response = response[:-1]
-            print("seding response")
             conn.sendall(response.encode())
-            print("response sent")
 
     conn.close()
 
