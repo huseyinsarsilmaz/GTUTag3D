@@ -27,7 +27,7 @@ public class Networking : MonoBehaviour
             return;
         }
         GameObject.DontDestroyOnLoad(this.gameObject);
-        serverIP = "34.125.136.30";
+        serverIP = "34.125.80.250";
         serverPort = 3389;
 
         //connect to server

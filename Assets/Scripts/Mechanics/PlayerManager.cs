@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
             players[int.Parse(player[0])].transform.GetChild(9).GetComponent<TMPro.TextMeshPro>().text = player[1];
             players[int.Parse(player[0])].transform.position = new Vector3(float.Parse(player[2]), float.Parse(player[3]), float.Parse(player[4]));
         }
-        myId = int.Parse(playerlist[4]);
+        myId = int.Parse(playerlist[2]);
     }
 
     // fixed update is called once per frame
