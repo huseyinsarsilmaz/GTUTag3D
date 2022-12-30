@@ -98,7 +98,7 @@ public class PlayerManager : MonoBehaviour
     {
         while (true)
         {
-            request = playerPositions[myId].x + " " + playerPositions[myId].y + " " + playerPositions[myId].z + " " + playerRotations[myId].x + " " + playerRotations[myId].y + " " + playerRotations[myId].z;
+            request = playerPositions[myId].x.ToString() + " " + playerPositions[myId].y.ToString() + " " + playerPositions[myId].z.ToString() + " " + playerRotations[myId].x.ToString() + " " + playerRotations[myId].y.ToString() + " " + playerRotations[myId].z.ToString();
             positions = networking.updateMyPos(request).Split(' ');
             for (int i = 0; i < positions.Length; i++)
             {
