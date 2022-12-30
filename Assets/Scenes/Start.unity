@@ -5773,6 +5773,7 @@ MonoBehaviour:
   password: 
   gameId: 
   myTeam: 
+  creator: 0
   gameState: -1
   myStatus: -1
 --- !u!4 &646520005

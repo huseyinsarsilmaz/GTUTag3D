@@ -371,6 +371,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &204376880
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204376876}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &264507470
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fc2927671100d419225af54f7b8976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 704286665}
 --- !u!1 &346132010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1580,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &624956807
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624956803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &629555186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1847,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704286665}
   m_LocalRotation: {x: 0.12710811, y: -0, z: -0, w: 0.9918889}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 18, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2169,6 +2206,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &882058569
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882058565}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &920326911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2349,6 +2404,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &920326918
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920326914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1102877744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2529,6 +2602,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1102877751
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102877747}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1200054986 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2452e7159141b2345b915e0d3aadecae, type: 3}
@@ -2883,6 +2974,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 3183749884578473501, guid: 2452e7159141b2345b915e0d3aadecae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000004750177
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183749884578473501, guid: 2452e7159141b2345b915e0d3aadecae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.002577326
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341119541397085964, guid: 2452e7159141b2345b915e0d3aadecae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000753656
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341119541397085964, guid: 2452e7159141b2345b915e0d3aadecae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0046921624
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2452e7159141b2345b915e0d3aadecae, type: 3}
 --- !u!4 &1463580026 stripped
@@ -2979,6 +3086,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!143 &1463580030
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200054986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1467337841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,6 +3456,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1479804175
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479804171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1513195537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3511,6 +3654,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1513195544
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513195540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1527270742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,6 +4196,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1637284861
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637284857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1746181173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4215,6 +4394,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1746181180
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746181176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1872966443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4395,6 +4592,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1872966450
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872966446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1989988338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4747,3 +4962,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bf32566d5f26c4293e6ea3159a82a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &2053297452
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053297448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
