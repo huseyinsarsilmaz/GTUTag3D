@@ -102,7 +102,8 @@ public class PlayerManager : MonoBehaviour
             positions = networking.updateMyPos(request).Split(' ');
             for (int i = 0; i < positions.Length; i++)
             {
-                string[] player = positions[i].Split('-');
+                Debug.Log(positions[i]);
+                string[] player = positions[i].Split('|');
                 playerPositions[int.Parse(player[0])] = new Vector3(float.Parse(player[1]), float.Parse(player[2]), float.Parse(player[3]));
                 playerRotations[int.Parse(player[0])] = new Quaternion(float.Parse(player[4]), float.Parse(player[5]), float.Parse(player[6]), 1);
             }
