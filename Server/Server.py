@@ -173,12 +173,12 @@ def worker(conn, addr, db):
             for player in players.values():
                 if (player["id"] != myid):
                     response += str(player["id"]) + "-"
-                    response += str(player["pos"][0]) + "-"
-                    response += str(player["pos"][1]) + "-"
-                    response += str(player["pos"][2]) + "-"
-                    response += str(player["pos"][3]) + "-"
-                    response += str(player["pos"][4]) + "-"
-                    response += str(player["pos"][5]) + " "
+                    response += str(player["pos"][0]).replace(".", ",") + "-"
+                    response += str(player["pos"][1]).replace(".", ",") + "-"
+                    response += str(player["pos"][2]).replace(".", ",") + "-"
+                    response += str(player["pos"][3]).replace(".", ",") + "-"
+                    response += str(player["pos"][4]).replace(".", ",") + "-"
+                    response += str(player["pos"][5]).replace(".", ",") + " "
             response = response[:-1]
             conn.sendall(response.encode())
 
