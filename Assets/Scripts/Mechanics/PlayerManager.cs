@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
             players.Add(int.Parse(player[0]), this.transform.GetChild(i).gameObject);
             players[int.Parse(player[0])].transform.GetChild(9).GetComponent<TMPro.TextMeshPro>().text = player[1];
             players[int.Parse(player[0])].transform.position = new Vector3(float.Parse(player[2]), float.Parse(player[3]), float.Parse(player[4]));
+            players[int.Parse(player[0])].transform.rotation = new Quaternion(float.Parse(player[5]), float.Parse(player[6]), float.Parse(player[7]), 1);
         }
         myId = int.Parse(playerlist[2]);
         camera.transform.position = new Vector3(players[myId].transform.position.x, players[myId].transform.position.y + 18, players[myId].transform.position.z - 20);
@@ -84,6 +85,7 @@ public class PlayerManager : MonoBehaviour
             {
                 string[] player = positions[i].Split('-');
                 players[int.Parse(player[0])].transform.position = new Vector3(float.Parse(player[1]), float.Parse(player[2]), float.Parse(player[3]));
+                players[int.Parse(player[0])].transform.rotation = new Quaternion(float.Parse(player[4]), float.Parse(player[5]), float.Parse(player[6]), 1);
             }
         }
     }

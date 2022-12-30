@@ -63,7 +63,10 @@ def worker(conn, addr, db):
                     response += player["username"] + "-"
                     response += str(player["pos"][0]) + "-"
                     response += str(player["pos"][1]) + "-"
-                    response += str(player["pos"][2]) + " "
+                    response += str(player["pos"][2]) + "-"
+                    response += str(player["pos"][3]) + "-"
+                    response += str(player["pos"][4]) + "-"
+                    response += str(player["pos"][5]) + " "
                     response = response[:-1]
                     response += " "
             response += str(myid)
@@ -94,7 +97,7 @@ def worker(conn, addr, db):
                     "id": myid,
                     "username": result[0][1],
                     "status": "login",
-                    "pos": [0, 0, 0]
+                    "pos": [0, 0, 0, 0, 0, 0]
                 }
                 conn.sendall("Done".encode())
             else:
@@ -151,7 +154,7 @@ def worker(conn, addr, db):
             if (readyCount == 2):
                 counter = 0
                 for player in players.values():
-                    player["pos"] = [counter * 20, 0, 0]
+                    player["pos"] = [counter * 20, 0, 0, 0, 0, 0]
                     counter += 1
                 conn.sendall("Yes".encode())
             else:
@@ -164,14 +167,18 @@ def worker(conn, addr, db):
 
         elif (data[0] == "mypos"):
             players[myid]["pos"] = [
-                float(data[1]), float(data[2]), float(data[3])]
+                float(data[1]), float(data[2]), float(data[3]), float(
+                    data[4]), float(data[5]), float(data[6])]
             response = ""
             for player in players.values():
                 if (player["id"] != myid):
                     response += str(player["id"]) + "-"
                     response += str(player["pos"][0]) + "-"
                     response += str(player["pos"][1]) + "-"
-                    response += str(player["pos"][2]) + " "
+                    response += str(player["pos"][2]) + "-"
+                    response += str(player["pos"][3]) + "-"
+                    response += str(player["pos"][4]) + "-"
+                    response += str(player["pos"][5]) + " "
             response = response[:-1]
             conn.sendall(response.encode())
 
